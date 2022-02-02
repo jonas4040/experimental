@@ -1,6 +1,6 @@
 package jonas4040.lista;
 
-public class No<T>{
+public class No<T>{		//no ou celulas
 	private T elemento;
 	private No<T> proximo;
 	
@@ -29,7 +29,7 @@ public class No<T>{
 	@Override
 	public String toString(){
 		StringBuilder str = new StringBuilder();
-		str.append("No [elemento= ").append(elemento).append(", proximo= ").append(proximo).append("]");
+		str.append("No : elemento= ").append(elemento).append(", proximo= ").append(proximo).append("");
 		return str.toString();
 	}
 }
