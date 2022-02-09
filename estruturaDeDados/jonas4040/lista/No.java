@@ -3,6 +3,7 @@ package jonas4040.lista;
 public class No<T>{		//no ou celulas
 	private T elemento;
 	private No<T> proximo;
+	private int indice;
 	
 	public No(T elemento){
 		this.elemento=elemento;
@@ -19,11 +20,23 @@ public class No<T>{		//no ou celulas
 	}
 	
 	//getters & setters
-	private T getElemento(){
+	public T getElemento(){
 		return this.elemento;
 	}
-	private No<T> getProximo(){
+	public No<T> getProximo(){
 		return this.proximo;
+	}
+	
+	public void setProximo(No<T> proximo){
+		this.proximo=proximo;
+	}
+	
+	public int getIndice(){
+		return this.indice;
+	}
+	
+	public void setIndice(int indice){
+		this.indice=indice;
 	}
 	
 	@Override

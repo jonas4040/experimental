@@ -8,39 +8,64 @@ public class ListaEncadeada<T>{
 	private int tamanho = 0;
 	//private int totalElementos;
 	
-	public void adicionar(T elemento){			//add no inicio da lista
+	public void addComeco(T elemento){			//add no inicio da lista
+		No<T> celula = new No<T>(elemento,this.inicio);
+		this.inicio = celula;
+		
 		if(tamanho == 0){//se estiver vazia a lista
-			No<T> celula = new No<T>(elemento);		//this is a new node
-			this.inicio=celula;
-			this.fim=celula;
+			//No<T> celula = new No<T>(elemento);		//this is a new node
+			this.fim=this.inicio;
+			//this.inicio.setIndice(0);
 			
-		}else{
-			No<T> celula = new No<T>(elemento,this.inicio);
+		}//else{
+			//No<T> celula = new No<T>(elemento,this.inicio);
 			//this.inicio.setAnterior(celula);
-		}
+		//}
+		
 		tamanho++;
+		this.fim.setIndice(tamanho-1);
+		//System.out.println(this.fim.getIndice());
 		
 	}
 	
-	public boolean adicionarChangeName(T elemento){		//add no final na lista
-		return false;
+	public void adicionar(T elemento){		//add no final na lista
+		if(tamanho==0){
+			this.addComeco(elemento);
+		}else{
+			No<T> celula = new No<>(elemento);
+			this.fim.setProximo(celula);
+			this.fim=celula;
+			this.fim.setIndice(tamanho);
+			tamanho++;
+		}
+		//return false;
+		//System.out.println(this.fim.getIndice());
 	}
 	
-	public int adicionarMudarNome(int posicao){
+	public int adicionar(int posicao,T elemento){
 		return posicao;
 	}			
 	
-	//insere elemento de forma ordenada		
-	
-	public T percorrerLista(){						//percorre a lista, pega o elemento(get) e TODO pode ser que imprima.
-		return null;
-	}
+	//TODO inserir elemento de forma ordenada
 	
 	public void limpar(){
-	
+		No<T> atual = inicio;
+		while(this.tamanho>0){
+			atual.setProximo(null);
+			this.tamanho--;
+		}
 	}
 	
-	public T buscar(int posicao){					//pesquisa um elemento numa posicao especifica
+	public T buscar(int posicao){			//pesquisa um elemento numa posicao especifica 
+											//TODO reorganizar os indices depois que insere no comeco
+		No<T> atual = inicio;
+		while(atual != null){
+			if(atual.getIndice() == posicao){
+				return atual.getElemento();
+			}
+			atual=atual.getProximo();
+		}
+		
 		return null;
 	}
 	
@@ -60,14 +85,26 @@ public class ListaEncadeada<T>{
 		return this.tamanho;
 	}
 	
-	public void setAnterior(No<T> celula){						//setter para attr inicio
-		this.inicio=celula; 
-	}
+	//
 	
 	@Override
 	public String toString(){
-		StringBuilder str = new StringBuilder();
-		str.append("Lista Encadeada : inicio= ").append(inicio).append("");
+		if(this.tamanho==0){
+			return "[]";
+		}
+		No<T> atual = inicio;
+		StringBuilder str = new StringBuilder("Lista Encadeada : ");
+		
+		//percorrendo a lista
+		while(atual != null){
+			str.append(atual.getElemento());
+			str.append(", ");
+			atual=atual.getProximo();
+		}
+		
+		//ultimo elemeno
+		//str.append(atual.getElemento());
+		str.append(".");
 		return str.toString();
 	}
 }
