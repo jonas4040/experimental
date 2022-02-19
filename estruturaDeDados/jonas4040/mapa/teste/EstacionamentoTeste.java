@@ -23,12 +23,16 @@ public class EstacionamentoTeste{
 		mapaCarros.put("KEY-8261",carro2);
 		mapaCarros.put("VLW-9287",carro3);
 		
+		buscaPlaca(mapaCarros,"VLW-9287");
 	}
 	
-	//busca o carro pela Placa
-	public static void buscaPlaca(Map<String,Carro> mapa){
+	//busca o carro pela Placa, no momento completa, mas futuramente com as letras iniciais
+	public static void buscaPlaca(Map<String,Carro> mapa, String placa){
 		//busca
-		
-		//percorre o mapa
+		if(mapa.containsKey(placa)){
+			System.out.println("Placa: "+placa+"\n"+mapa.get(placa));
+		}else{
+			System.out.println("Esta chave nao existe");
+		}
 	}
 }
