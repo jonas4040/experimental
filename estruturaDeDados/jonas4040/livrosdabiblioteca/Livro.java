@@ -1,6 +1,6 @@
 package jonas4040.livrosdabiblioteca;
 
-public class Livro{
+public class Livro implements Comparable<Livro>{
 	private int codigo;
 	private String titulo;
 	private String autor;
@@ -39,7 +39,14 @@ public class Livro{
 		this.autor=autor;
 	}
 	
+	@Override
 	public String toString(){//TODO colocar Iterator para cada elemento
 		return this.codigo+" "+this.titulo+" "+this.autor;
 	}
+	
+	@Override
+	public int compareTo(Livro livro){
+		return titulo.length() - livro.getTitulo().length(); //classe - metodo
+	}
+	
 }

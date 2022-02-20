@@ -1,13 +1,16 @@
 package jonas4040.livrosdabiblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Biblioteca{
 	public static void main(String[] args){
 		Scanner sc=new Scanner(System.in);
 		
-		ArrayList<Livro> livros=new ArrayList<>();
+		List<Livro> livros=new ArrayList<>();
 		Livro novoLivro=new Livro();
 		
 		int opcao=Integer.parseInt(escolheOpcaoMenu(sc));
@@ -103,7 +106,7 @@ public class Biblioteca{
 		return dado;
 	}
 	
-	public static void adicionarLivro(Scanner sc,ArrayList<Livro> livros,Livro novoLivro){
+	public static void adicionarLivro(Scanner sc,List<Livro> livros,Livro novoLivro){
 		System.out.print("Digite o codigo do livro: ");
 		novoLivro.setCodigo(leInteiro(sc,novoLivro.getCodigo()));
 		System.out.print("Digite o titulo: ");
@@ -114,15 +117,26 @@ public class Biblioteca{
 		livros.add(novoLivro);
 	}
 	
-	public static void mostraTodos(ArrayList<Livro> livros){
+	public static void mostraTodos(List<Livro> livros){
 		System.out.println("-----------LIVROS DA BIBLIOTECA------------");
 		System.out.println(livros);
 		System.out.println();
 		System.out.println();
 	}
 	
-	public static String buscaPorTitulo(String titulo, ArrayList<Livro> livros){//TODO APRENDER MAIS TARDE
+	public static Livro buscaPorTitulo(String titulo, List<Livro> livros){//TODO APRENDER MAIS TARDE
 		String elemento="";
+		Comparator<Livro> comparator =new Comparator<Livro>(){
+			@Override
+			public int compare(Livro livro1, Livro livro2){
+				Integer tamanho1=livro1.getTitulo().length();
+				Integer tamanho2=livro2.getTitulo().length();
+				return Integer.valueOf(tamanho1.compareTo(tamanho2));
+			}
+		};
+		Collections.sort(livros,comparator);
+		
+		int indice = Collections.binarySearch(livros,new Livro(344,titulo,"Jacobim"));
 		
 		/*try{//caso o indice=-1 ou seja, esteja fora dos elementos do arraylist
 			//titulo=(Livro) titulo;
@@ -131,25 +145,25 @@ public class Biblioteca{
 		}catch(IndexOutOfBoundsException ie){
 			System.out.println("Nenhum resultado foi encontrado");
 		}*/
-		return elemento;
+		return livros.get(indice);
 	}
 	
-	public static String buscaPorAutor(String autor, ArrayList<Livro> livros){//TODO APRENDER MAIS TARDE
+	public static String buscaPorAutor(String autor, List<Livro> livros){//TODO APRENDER MAIS TARDE
 		return "";
 	}
 	
-	public static int buscaPorCodigo(int codigo,ArrayList<Livro> livros){//TODO APRENDER MAIS TARDE
+	public static int buscaPorCodigo(int codigo,List<Livro> livros){//TODO APRENDER MAIS TARDE
 		return 0;
 	}
 	
-	public static void removePorTitulo(String titulo,ArrayList<Livro> livros){//TODO APRENDER MAIS TARDE
+	public static void removePorTitulo(String titulo,List<Livro> livros){//TODO APRENDER MAIS TARDE
 		if(livros.remove(titulo))
 			System.out.println("Livro removido com sucesso");
 		else
 			System.out.println("Livro nao encontrado");
 	}
 	
-	public static void limpar(ArrayList<Livro> livros){
+	public static void limpar(List<Livro> livros){
 			livros.clear();
 			System.out.println("Removendo todos os livros do sistema");
 	}
