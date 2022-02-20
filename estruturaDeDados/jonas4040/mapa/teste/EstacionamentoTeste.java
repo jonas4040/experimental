@@ -3,6 +3,9 @@ package jonas4040.mapa.teste;
 import jonas4040.mapa.Carro;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class EstacionamentoTeste{
 	public static void main(String[] args){
@@ -29,6 +32,11 @@ public class EstacionamentoTeste{
 	//busca o carro pela Placa, no momento completa, mas futuramente com as letras iniciais
 	public static void buscaPlaca(Map<String,Carro> mapa, String placa){
 		//busca
+		//primeiro ordena
+		List<String> listaPlaca = new ArrayList<>(mapa.keySet());
+		Collections.sort(listaPlaca);
+		int indicePlaca=Collections.binarySearch(listaPlaca,placa);
+		
 		if(mapa.containsKey(placa)){
 			System.out.println("Placa: "+placa+"\n"+mapa.get(placa));
 		}else{
