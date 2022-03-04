@@ -25,8 +25,10 @@ public class ContaEspecial extends ContaBancaria{
 	public void sacar(double valor) {
 		if(valor<this.getLimite() && valor<this.getSaldo())
 			super.sacar(valor);
-		else
+		else {
+			this.setSaldo(this.getSaldo());
 			System.out.println("Por enquanto voce nao pode sacar mais que R$"+limite);
+		}
 	}
 	
 	@Override

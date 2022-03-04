@@ -44,7 +44,7 @@ public class ContaBancaria {
 	}
 	
 	public void depositar(double valor,ContaBancaria destinatario) {
-		destinatario.setSaldo(valor+this.getSaldo());
+		destinatario.setSaldo(valor+destinatario.getSaldo());
 		this.sacar(valor);
 	}
 	
