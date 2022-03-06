@@ -16,7 +16,7 @@ public class Contribuinte {
 		return nome;
 	}
 
-	public void setNomeCliente(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
@@ -36,8 +36,9 @@ public class Contribuinte {
 		this.aliquota = aliquota;
 	}
 
-	public double calcularImposto() {
-		double imposto = this.rendaBrutaAnual*this.aliquota;
+	public double calcularImposto(double salario) {
+		
+		double imposto = salario*this.getAliquota();
 		return imposto;
 	}
 	
@@ -45,7 +46,8 @@ public class Contribuinte {
 	public String toString() {
 		String str =this.nome;
 		str+=", voce tem que pagar R$";
-		str+=this.calcularImposto();
+		str+=this.calcularImposto(this.rendaBrutaAnual);
+		str+=" de imposto de renda esse ano.";
 		
 		return str;
 	}

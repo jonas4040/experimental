@@ -1,5 +1,18 @@
 package jonas4040.cursojavabasico.aula44.labs;
 
-public class PessoaJuridica {
+public class PessoaJuridica extends Contribuinte{
+	
+	
+	public PessoaJuridica() {}
 
+	public PessoaJuridica(String nome, double rendaBrutaAnual) {
+		super(nome, rendaBrutaAnual);
+	}
+
+	@Override
+	public double calcularImposto(double lucroAnual) {
+		lucroAnual=super.getRendaBrutaAnual();
+		super.setAliquota(Constantes.ALIQUOTA_EMPRESA);
+		return super.calcularImposto(lucroAnual);
+	}
 }

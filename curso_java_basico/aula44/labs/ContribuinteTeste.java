@@ -1,26 +1,39 @@
-/*
- * Tabela Atualizada IRPF 2022
- * disponivel em: https://www.ministeriodotrabalho.org/imposto-de-renda-aliquotas-e-tabela-atualizada-do-irpf/
- * 
- * Base de cálculo			Alíquota	Dedução
-de 0,00 até 1.903,98		isento		0,00
-de 1.903,99 até 2.826,65	7,50%		142,80
-de 2.826,66 até 3.751,05	15,00%		354,80
-de 3.751,06 até 4.664,68	22,50%		636,13
-a partir de 4.664,68		27,50%		869,36
-
-Valor de dependentes: 189,59
- *
- *
- */
 package jonas4040.cursojavabasico.aula44.labs;
+
+import java.util.Scanner;
 
 public class ContribuinteTeste {
 
 	public static void main(String[] args) {
-		Contribuinte jonas = new Contribuinte("Jonas", 10000);
+		Scanner sc=new Scanner(System.in);
+		//Contribuinte jonas = new Contribuinte("Jonas", 10000);
+		/*Contribuinte empresaX= new PessoaJuridica("Coca-Cola",90000.03);
+		Contribuinte pessoaA= new PessoaFisica("Carla", 1400);
 		
-		System.out.println(jonas);
+		Contribuinte empresaY= new PessoaJuridica("Henkel",100000.74);
+		Contribuinte pessoaB= new PessoaFisica("Joao", 2800);
+		
+		Contribuinte empresaZ= new PessoaJuridica("Zara",4570000.97);
+		Contribuinte pessoaC= new PessoaFisica("Ioseph", 3600);*/
+		
+		Contribuinte mom = new PessoaFisica();
+		mom.setNome(leNome(sc));
+		mom.setRendaBrutaAnual(leSalario(sc));
+		
+		System.out.println(" \t\t-----------IRPF------------ ");
+		System.out.println(mom);
+		System.out.println(" \t\t------------***----------- ");
 	}
-
+	
+	public static String leNome(Scanner sc) {
+		System.out.print("Digite seu nome: ");
+		String nome = sc.next();
+		return nome;
+	}
+	
+	public static double leSalario(Scanner sc) {
+		System.out.print("Digite seu salario: ");
+		double salario = sc.nextDouble();
+		return salario;
+	}
 }
