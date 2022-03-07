@@ -32,6 +32,13 @@ public final class Constantes {
 	public static final double TETO_MIN_GRUPO3 = 3751.06;
 	public static final double TETO_MAX_GRUPO3 = 4664.68;
 	public static final double TETO_MIN_GRUPO4 = 4664.69;
+	
+	public static final double DEDUCAO_GRUPO1 = 142.80;
+	public static final double DEDUCAO_GRUPO2 = 354.80;
+	public static final double DEDUCAO_GRUPO3 = 636.13;
+	public static final double DEDUCAO_GRUPO4 = 869.36;
+
+	
 
 	/*
 	 * VALORES DA ATIVIDADE SOBRE IMPOSTO DE RENDA

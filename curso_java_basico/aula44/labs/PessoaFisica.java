@@ -15,15 +15,19 @@ public class PessoaFisica extends Contribuinte{
 			super.setAliquota(Constantes.ALIQUOTA_ISENTO);
 		}else if(salario>=Constantes.TETO_MIN_GRUPO1 && salario<=Constantes.TETO_MAX_GRUPO1) {
 			super.setAliquota(Constantes.ALIQUOTA_GRUPO1);
+			deducao = Constantes.DEDUCAO_GRUPO1;
 		}else if(salario>=Constantes.TETO_MIN_GRUPO2 && salario<=Constantes.TETO_MAX_GRUPO2) {
 			super.setAliquota(Constantes.ALIQUOTA_GRUPO2);
+			deducao = Constantes.DEDUCAO_GRUPO2;
 		}else if(salario>=Constantes.TETO_MIN_GRUPO3 && salario<=Constantes.TETO_MAX_GRUPO3) {
 			super.setAliquota(Constantes.ALIQUOTA_GRUPO3);
+			deducao = Constantes.DEDUCAO_GRUPO3;
 		}else if(salario>=Constantes.TETO_MIN_GRUPO4) {
 			super.setAliquota(Constantes.ALIQUOTA_GRUPO4);
+			deducao = Constantes.DEDUCAO_GRUPO4;
 		}else {
 			System.out.println("Salario nao pode ser negativo.");
 		}
-		return super.calcularImposto(salario);
+		return super.calcularImposto(salario,deducao);
 	}
 }
