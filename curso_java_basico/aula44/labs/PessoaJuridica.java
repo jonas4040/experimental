@@ -10,9 +10,9 @@ public class PessoaJuridica extends Contribuinte{
 	}
 
 	@Override
-	public double calcularImposto(double lucroAnual,double deducao) {
+	public double calcularImposto(double lucroAnual) {
 		lucroAnual=super.getRendaBrutaAnual();
 		super.setAliquota(Constantes.ALIQUOTA_EMPRESA);
-		return super.calcularImposto(lucroAnual,0);
+		return super.calcularImposto(lucroAnual);
 	}
 }

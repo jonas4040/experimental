@@ -36,9 +36,9 @@ public class Contribuinte {
 		this.aliquota = aliquota;
 	}
 
-	public double calcularImposto(double salario,double deducao) {
-		
-		double imposto = (salario*this.getAliquota())-deducao;
+	public double calcularImposto(double salario) {
+		//double deducao = 0.0;
+		double imposto = (salario*this.getAliquota());
 		return imposto;
 	}
 	

@@ -10,6 +10,7 @@ public class PessoaFisica extends Contribuinte{
 	
 	@Override
 	public double calcularImposto(double salario) {
+		double deducao =0.0;
 		salario=this.getRendaBrutaAnual();
 		if(salario>=0 && salario<=Constantes.TETO_MAX_ISENTO) {
 			super.setAliquota(Constantes.ALIQUOTA_ISENTO);
@@ -28,6 +29,6 @@ public class PessoaFisica extends Contribuinte{
 		}else {
 			System.out.println("Salario nao pode ser negativo.");
 		}
-		return super.calcularImposto(salario,deducao);
+		return super.calcularImposto(salario) - deducao;
 	}
 }
