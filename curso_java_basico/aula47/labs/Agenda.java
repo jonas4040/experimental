@@ -1,20 +1,62 @@
 package jonas4040.aula47.labs;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Agenda {
-	//TODO escrever algoritmo
+public class Agenda {	
 	private List<Contato> contatos;
 	
-	public void consultar(List<Contato> agenda, int ID) {
-		if(agenda.get(ID-1).getID()==contatos.get(ID-1).getID()) {}
+	public Agenda() {contatos=new ArrayList<>();}
+	
+	public String consultar(Scanner sc, Contato contato, String nome) {
+		System.out.print("---Pesquisar contato---\nDigite o nome do contato: ");
+		nome = sc.next();
+		
+		if(this.getContatos().contains(contato) && contato.getNome().equals(nome)) {
+			return this.getContatos().get(this.getContatos().indexOf(contato)).toString();
+		}
+		return "Contato nao existe \n";
 	}
 	
-	public void consultar(String nome) {
-		//if() {}
+	public String consultar(Scanner sc, Contato contato, long telefone) {
+		System.out.print("---Pesquisar contato---\nDigite o telefone do contato (somente numeros): ");
+		telefone = sc.nextLong();
+		
+		if(this.getContatos().contains(contato) && contato.getTelefone()==telefone) {
+			return this.getContatos().get(this.getContatos().indexOf(contato)).toString();
+		}
+		return "Contato nao existe \n";
 	}
 	
-	public boolean addContato(Contato contato) {
-		return false;
+	public Contato addContato(Scanner sc) {
+		List<Contato> agenda=new ArrayList<Contato>();
+		Contato contato=null;
+		boolean deuCerto=false;
+		
+		//for(int i=0;i<3;i++) {
+			System.out.print("---Criar novo contato---\nDigite o nome do contato: ");
+			String nome=sc.next();
+			System.out.print("Digite o telefone (somente numeros). Ex: 11941025765: ");
+			long telefone=sc.nextLong();
+			contato =new Contato(nome,telefone);
+			deuCerto=agenda.add(contato);
+			this.setContatos(agenda);
+		//}
+		return contato;
+	}
+	
+	
+	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
+
+	@Override
+	public String toString() {
+		return "Agenda [contatos=" + contatos + "]";
 	}
 }
