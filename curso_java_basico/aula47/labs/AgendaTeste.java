@@ -31,8 +31,9 @@ public class AgendaTeste {
 					case 2:System.out.println(bookList.consultar(sc, contato, ""));break;
 					case 3:System.out.println(bookList.consultar(sc, contato, 123)); break;
 					case 0:System.out.println("Saindo . . .");
-					default: System.out.println("Opcao invalida, digite novamente"); break;
-				}
+					default:System.out.println("Opcao invalida, digite novamente");break;
+					}
+				
 				System.out.println("Digite uma opcao: \n"+
 						"1 - Adicionar contato\n"+
 						"2 - Consultar por nome\n"+
@@ -41,5 +42,4 @@ public class AgendaTeste {
 				opcao=sc.nextInt();
 			}
 	}
-
 }

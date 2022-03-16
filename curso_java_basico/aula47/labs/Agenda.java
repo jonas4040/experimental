@@ -15,8 +15,14 @@ public class Agenda {
 		
 		if(this.getContatos().contains(contato) && contato.getNome().equals(nome)) {
 			return this.getContatos().get(this.getContatos().indexOf(contato)).toString();
+		}else {
+			try{
+				throw new ContatoNaoExisteException("Aconteceu um erro, o contato nao existe.");
+			}catch(ContatoNaoExisteException e) {
+				e.getMessage();
+			}
 		}
-		return "Contato nao existe \n";
+		return "";
 	}
 	
 	public String consultar(Scanner sc, Contato contato, long telefone) {
@@ -38,8 +44,20 @@ public class Agenda {
 			System.out.print("---Criar novo contato---\nDigite o nome do contato: ");
 			String nome=sc.next();
 			System.out.print("Digite o telefone (somente numeros). Ex: 11941025765: ");
-			long telefone=sc.nextLong();
-			contato =new Contato(nome,telefone);
+			String telefone="";
+			try {
+			telefone=sc.next();
+			}catch(NumberFormatException nfe) {
+				System.out.println("Aconteceu um erro, digite somente numeros, \nsem letras ou caracteres");
+			}catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				contato =new Contato(nome,Long.parseLong(telefone));
+			}catch(NumberFormatException nfe) {
+				System.out.println("Aconteceu um erro, digite somente numeros, \nsem letras ou caracteres");
+			}
 			deuCerto=agenda.add(contato);
 			this.setContatos(agenda);
 		//}
