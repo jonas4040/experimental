@@ -1,0 +1,7 @@
+#contador--
+000 01 102 06 103
+#armazena novo valor na memória
+001 21 102 0f 000
+
+102 00 00 00 00 09 # Contador
+103 00 00 00 00 01 # Constante 1
