@@ -1,0 +1,8 @@
+                        # meu primeiro Programa
+                          # eh para somar 7+3
+                        #LOAD M(0x100) e ADD M(0x101)
+0000 01 100 05 101
+                        #STOR M(0x102)
+0001 21 102 00 000
+0100 00 00 00 00 07     #x=7
+0101 00 00 00 00 03     #y=3
