@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+xmlns="http://java.sun.com/xml/ns/j2ee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<servlet>
+		<servlet-name>ListenerTester</servlet-name>
+		<servlet-class>jonas4040.ListenerTester</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ListenerTester</servlet-name>
+		<url-pattern>/ListenTest.do</url-pattern>
+	</servlet-mapping>
+	
+	<context-param>
+		<param-name>breed</param-name>
+		<param-value>Golden Retriever</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>
+		jonas4040.DogBreedListener
+		</listener-class>
+	</listener>
+</web-app>
